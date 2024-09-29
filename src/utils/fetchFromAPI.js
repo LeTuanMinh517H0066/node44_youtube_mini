@@ -7,9 +7,7 @@ const options = {
     maxResults: 50,
   },
   headers: {
-    'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
-    'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com',
-    // 'token': localStorage.getItem("LOGIN_USER")
+    token: localStorage.getItem("LOGIN_USER")
   },
 };
 
@@ -45,3 +43,12 @@ export const registerApi = async (payload) => {
   return data;
 }
 
+export const loginApi = async (payload) => {
+  const {data} = await axios.post(`${BASE_URL}/auth/login`, payload);
+  return data;
+}
+
+export const loginFacebookApi = async(newUser) => {
+  const {data} = await axios.post(`${BASE_URL}/auth/login-face`, newUser);
+  return data;
+}
